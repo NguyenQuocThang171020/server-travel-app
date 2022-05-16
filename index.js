@@ -11,6 +11,7 @@ const userRouter = require('./routes/user.js')
 const ticketRouter = require('./routes/ticket.js')
 app.use(cors());
 app.use(bodyParser.json()); 
+const PORT = process.env.PORT || 8080
 
 mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.70sku.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`,{
     useNewUrlParser: true,
@@ -22,6 +23,6 @@ app.use('/v1',travelRouter)
 app.use('/auth',userRouter)
 app.use('/admin',ticketRouter)
 
-app.listen(process.env.PORT || 8080,()=>{
+app.listen( PORT,()=>{
     console.log('Server is running');
 })
